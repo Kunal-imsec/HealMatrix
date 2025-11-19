@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  box-shadow: 0 8px 24px 0 rgba(96, 165, 250, 0.12);
+  background-clip: padding-box;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

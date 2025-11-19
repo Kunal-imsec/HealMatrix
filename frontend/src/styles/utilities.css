@@ -1,0 +1,286 @@
+/* ===========================
+   MATERIAL DESIGN 3 - UTILITY CLASSES
+   =========================== */
+
+/* Surface Colors */
+.surface {
+  background-color: rgb(var(--md-sys-color-surface));
+  color: rgb(var(--md-sys-color-on-surface));
+}
+
+.surface-variant {
+  background-color: rgb(var(--md-sys-color-surface-variant));
+  color: rgb(var(--md-sys-color-on-surface-variant));
+}
+
+.surface-container-lowest {
+  background-color: rgb(var(--md-sys-color-surface-container-lowest));
+}
+
+.surface-container-low {
+  background-color: rgb(var(--md-sys-color-surface-container-low));
+}
+
+.surface-container {
+  background-color: rgb(var(--md-sys-color-surface-container));
+}
+
+.surface-container-high {
+  background-color: rgb(var(--md-sys-color-surface-container-high));
+}
+
+.surface-container-highest {
+  background-color: rgb(var(--md-sys-color-surface-container-highest));
+}
+
+/* Primary Colors */
+.bg-primary {
+  background-color: rgb(var(--md-sys-color-primary));
+  color: rgb(var(--md-sys-color-on-primary));
+}
+
+.bg-primary-container {
+  background-color: rgb(var(--md-sys-color-primary-container));
+  color: rgb(var(--md-sys-color-on-primary-container));
+}
+
+.text-primary {
+  color: rgb(var(--md-sys-color-primary));
+}
+
+/* Secondary Colors */
+.bg-secondary {
+  background-color: rgb(var(--md-sys-color-secondary));
+  color: rgb(var(--md-sys-color-on-secondary));
+}
+
+.bg-secondary-container {
+  background-color: rgb(var(--md-sys-color-secondary-container));
+  color: rgb(var(--md-sys-color-on-secondary-container));
+}
+
+.text-secondary {
+  color: rgb(var(--md-sys-color-secondary));
+}
+
+/* Tertiary Colors */
+.bg-tertiary {
+  background-color: rgb(var(--md-sys-color-tertiary));
+  color: rgb(var(--md-sys-color-on-tertiary));
+}
+
+.bg-tertiary-container {
+  background-color: rgb(var(--md-sys-color-tertiary-container));
+  color: rgb(var(--md-sys-color-on-tertiary-container));
+}
+
+/* Error Colors */
+.bg-error {
+  background-color: rgb(var(--md-sys-color-error));
+  color: rgb(var(--md-sys-color-on-error));
+}
+
+.bg-error-container {
+  background-color: rgb(var(--md-sys-color-error-container));
+  color: rgb(var(--md-sys-color-on-error-container));
+}
+
+.text-error {
+  color: rgb(var(--md-sys-color-error));
+}
+
+/* Success Colors */
+.bg-success {
+  background-color: rgb(var(--md-sys-color-success));
+  color: rgb(var(--md-sys-color-on-success));
+}
+
+.bg-success-container {
+  background-color: rgb(var(--md-sys-color-success-container));
+  color: rgb(var(--md-sys-color-on-success-container));
+}
+
+.text-success {
+  color: rgb(var(--md-sys-color-success));
+}
+
+/* Warning Colors */
+.bg-warning {
+  background-color: rgb(var(--md-sys-color-warning));
+  color: rgb(var(--md-sys-color-on-warning));
+}
+
+.bg-warning-container {
+  background-color: rgb(var(--md-sys-color-warning-container));
+  color: rgb(var(--md-sys-color-on-warning-container));
+}
+
+.text-warning {
+  color: rgb(var(--md-sys-color-warning));
+}
+
+/* Material Cards */
+.md-card {
+  background-color: rgb(var(--md-sys-color-surface-container-low));
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 16px;
+}
+
+.md-card-filled {
+  background-color: rgb(var(--md-sys-color-surface-container-highest));
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 16px;
+}
+
+.md-card-elevated {
+  background-color: rgb(var(--md-sys-color-surface-container-low));
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 16px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.md-card-outlined {
+  background-color: rgb(var(--md-sys-color-surface));
+  border: 1px solid rgb(var(--md-sys-color-outline));
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 16px;
+}
+
+/* Shape System */
+.rounded-none {
+  border-radius: var(--md-sys-shape-corner-none);
+}
+
+.rounded-xs {
+  border-radius: var(--md-sys-shape-corner-extra-small);
+}
+
+.rounded-sm {
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+.rounded-md {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.rounded-lg {
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.rounded-xl {
+  border-radius: var(--md-sys-shape-corner-extra-large);
+}
+
+.rounded-full {
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+/* State Layers */
+.state-layer {
+  position: relative;
+  overflow: hidden;
+}
+
+.state-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.state-layer:hover::before {
+  opacity: var(--md-sys-state-hover-opacity);
+}
+
+.state-layer:focus::before {
+  opacity: var(--md-sys-state-focus-opacity);
+}
+
+.state-layer:active::before {
+  opacity: var(--md-sys-state-pressed-opacity);
+}
+
+/* Ripple Effect Container */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Material Container */
+.md-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 600px) {
+  .md-container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .md-container {
+    padding: 0 32px;
+  }
+}
+
+/* Dividers */
+.md-divider {
+  height: 1px;
+  background-color: rgb(var(--md-sys-color-outline-variant));
+  border: none;
+  margin: 16px 0;
+}
+
+.md-divider-vertical {
+  width: 1px;
+  background-color: rgb(var(--md-sys-color-outline-variant));
+  border: none;
+  margin: 0 16px;
+}
+
+/* Material Badges */
+.md-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0px 8px;
+  height: 16px;
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: rgb(var(--md-sys-color-error));
+  color: rgb(var(--md-sys-color-on-error));
+  white-space: nowrap;
+}
+
+.md-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgb(var(--md-sys-color-error));
+}
+
+/* Skeleton Loading */
+.md-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--md-sys-color-surface-container)),
+    rgb(var(--md-sys-color-surface-container-high)),
+    rgb(var(--md-sys-color-surface-container))
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}

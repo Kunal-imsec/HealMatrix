@@ -1,0 +1,90 @@
+/* ===========================
+   PRINT STYLES
+   =========================== */
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide elements */
+  .no-print,
+  .md-fab,
+  .md-snackbar,
+  header,
+  nav,
+  .md-navigation-rail,
+  .md-top-app-bar,
+  button,
+  .md-dialog-overlay {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 24pt;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 20pt;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 16pt;
+    page-break-after: avoid;
+  }
+
+  /* Tables */
+  table {
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Cards */
+  .md-card,
+  .md-card-elevated {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  /* Links */
+  a {
+    text-decoration: underline;
+    color: black;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+}

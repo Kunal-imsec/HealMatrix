@@ -1,0 +1,161 @@
+/* ===========================
+   APPLICATION CUSTOM STYLES
+   Hospital Management System
+   =========================== */
+
+/* Layout Structure */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: rgb(var(--md-sys-color-background));
+}
+
+.app-sidebar {
+  width: 280px;
+  background-color: rgb(var(--md-sys-color-surface-container));
+  border-right: 1px solid rgb(var(--md-sys-color-outline-variant));
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: var(--z-fixed);
+}
+
+.app-main {
+  flex: 1;
+  margin-left: 280px;
+  min-height: 100vh;
+}
+
+.app-content {
+  padding: var(--spacing-lg);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Stat Cards */
+.stat-card {
+  background-color: rgb(var(--md-sys-color-surface-container-low));
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.stat-card:hover {
+  box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: rgb(var(--md-sys-color-on-surface-variant));
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  color: rgb(var(--md-sys-color-on-surface));
+}
+
+.stat-change {
+  font-size: var(--md-sys-typescale-label-small-size);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-change.positive {
+  color: rgb(var(--md-sys-color-success));
+}
+
+.stat-change.negative {
+  color: rgb(var(--md-sys-color-error));
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+}
+
+.status-scheduled {
+  background-color: rgb(var(--status-scheduled) / 0.12);
+  color: rgb(var(--status-scheduled));
+}
+
+.status-confirmed {
+  background-color: rgb(var(--status-confirmed) / 0.12);
+  color: rgb(var(--status-confirmed));
+}
+
+.status-in-progress {
+  background-color: rgb(var(--status-in-progress) / 0.12);
+  color: rgb(var(--status-in-progress));
+}
+
+.status-completed {
+  background-color: rgb(var(--status-completed) / 0.12);
+  color: rgb(var(--status-completed));
+}
+
+.status-cancelled {
+  background-color: rgb(var(--status-cancelled) / 0.12);
+  color: rgb(var(--status-cancelled));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized);
+  }
+  
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .app-main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: var(--spacing-md);
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

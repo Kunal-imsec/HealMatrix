@@ -1,0 +1,50 @@
+/* ===========================
+   CUSTOM THEME EXTENSIONS
+   Hospital Management Specific
+   =========================== */
+
+:root {
+  /* Status Colors */
+  --status-scheduled: 59 130 246;
+  --status-confirmed: 34 197 94;
+  --status-in-progress: 251 146 60;
+  --status-completed: 16 185 129;
+  --status-cancelled: 239 68 68;
+  --status-no-show: 156 163 175;
+  
+  /* Department Colors */
+  --dept-cardiology: 239 68 68;
+  --dept-neurology: 139 92 246;
+  --dept-orthopedics: 59 130 246;
+  --dept-pediatrics: 236 72 153;
+  --dept-gynecology: 244 114 182;
+  --dept-emergency: 220 38 38;
+  --dept-general: 75 85 99;
+  --dept-icu: 14 165 233;
+  
+  /* Priority Colors */
+  --priority-low: 34 197 94;
+  --priority-normal: 59 130 246;
+  --priority-high: 251 146 60;
+  --priority-urgent: 239 68 68;
+  --priority-critical: 153 27 27;
+  
+  /* Custom Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Z-Index Layers */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-toast: 70;
+  --z-tooltip: 80;
+}

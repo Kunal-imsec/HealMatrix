@@ -1,0 +1,21 @@
+@import './tailwind.css';
+@import './globals.css';
+@import './utilities.css';
+@import './animations.css';
+@import './components.css';
+@import './custom.css';
+@import './themes/light.css';
+@import './themes/dark.css';
+@import './print.css';
+
+/* Apply light theme by default (Material Design convention) */
+:root {
+  color-scheme: light dark;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
