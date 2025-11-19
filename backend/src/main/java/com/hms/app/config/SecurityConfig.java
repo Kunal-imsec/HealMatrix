@@ -33,24 +33,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // ==================== CSRF DISABLED for REST & H2 ====================
                 .csrf(AbstractHttpConfigurer::disable)
-
-                // ==================== CORS CONFIGURATION ====================
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-
-                // ==================== EXCEPTION HANDLER ====================
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 )
-
-                // ==================== AUTHORIZATION RULES ====================
                 .authorizeHttpRequests(auth -> auth
-
-                        // ==================== H2 Console - MUST BE FIRST ====================
+                        // H2 Console
                         .requestMatchers("/h2-console/**").permitAll()
 
-                        // ==================== PUBLIC ENDPOINTS ====================
+                        // ✅ Health check for Render
+                        .requestMatchers("/api/health", "/api/ping").permitAll()
+
+                        // Public endpoints
                         .requestMatchers(
                                 "/",
                                 "/health",
@@ -59,15 +54,13 @@ public class SecurityConfig {
                                 "/actuator/**"
                         ).permitAll()
 
-                        // ==================== AUTHENTICATION ENDPOINTS ====================
-                        // Support BOTH /api/v1/auth/** AND /api/auth/** paths
+                        // Authentication endpoints
                         .requestMatchers(
                                 "/api/v1/auth/**",
                                 "/api/auth/**"
                         ).permitAll()
 
-                        // ==================== PUBLIC DATA ENDPOINTS ====================
-                        // ✅ Allow anyone to view departments and doctors (read-only)
+                        // Public data endpoints
                         .requestMatchers(
                                 "/api/v1/departments",
                                 "/api/departments",
@@ -75,19 +68,19 @@ public class SecurityConfig {
                                 "/api/doctors/specializations"
                         ).permitAll()
 
-                        // ✅ Public read-only access to doctor list (for patients to find doctors)
+                        // Public read-only doctor list
                         .requestMatchers(org.springframework.http.HttpMethod.GET,
                                 "/api/v1/doctors",
                                 "/api/doctors"
                         ).permitAll()
 
-                        // ==================== ADMIN ENDPOINTS ====================
+                        // Admin endpoints
                         .requestMatchers(
                                 "/api/v1/admin/**",
                                 "/api/admin/**"
                         ).hasRole("ADMIN")
 
-                        // ==================== ROLE-SPECIFIC ENDPOINTS ====================
+                        // Role-specific endpoints
                         .requestMatchers("/api/v1/doctor/**", "/api/doctor/**")
                         .hasAnyRole("DOCTOR", "ADMIN")
 
@@ -103,21 +96,13 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/pharmacist/**", "/api/pharmacist/**")
                         .hasAnyRole("PHARMACIST", "ADMIN")
 
-                        // ==================== DEFAULT ====================
                         .anyRequest().authenticated()
                 )
-
-
-                // ==================== SESSION MANAGEMENT ====================
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-
-                // ==================== AUTHENTICATION PROVIDER & FILTERS ====================
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-
-                // ==================== H2 CONSOLE FRAME SUPPORT ====================
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin())
                 );
@@ -125,12 +110,17 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // -------------------- CORS CONFIG --------------------
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+
+        // ✅ Allow all origins in development, specific in production
         configuration.setAllowedOriginPatterns(List.of("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+
+        configuration.setAllowedMethods(Arrays.asList(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
+        ));
+
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
         configuration.setExposedHeaders(List.of("Authorization"));

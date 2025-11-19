@@ -73,10 +73,10 @@ compileJava.dependsOn processResources
 // Boot jar configuration
 jar {
 	enabled = false
-	archiveClassifier = ''
+
 }
 
 bootJar {
 	enabled = true
-	archiveClassifier = ''
+	archiveFileName = 'app.jar'
 }
